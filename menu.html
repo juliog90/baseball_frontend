@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width initial-scale=1">
+      <link rel="stylesheet" href="css/skeleton.css" type="text/css" media="screen" title="no title" charset="utf-8">
+      <title class="title">Menu</title>
+      <body>
+        <div class="container">
+          <section class="navbar">
+            <h2>Sistema de Administracion de Beisbol</h2>
+            <h3>Escoja la opcion que desee</h3>
+          </section>
+          <section class="sistema">
+            <div id="seasons" class="row">
+              <h5 class="filas">Temporadas</h5>
+              <button class="button-primary" onclick="location.href='season/show.html';">Consultar</button>
+              <button class="button-primary" onclick="location.href='season/create.html';">Agregar</button>
+              <button class="button-primary" onclick="location.href='season/edit.html';">Actualizar</button>
+              <button class="button-primary" onclick="location.href='season/del.html';">Borrar</button>
+            </div>
+            <div id="categories" class="row">
+              <h5 class="filas">Categorias</h5>
+              <button onclick="location.href='category/show.html';">Consultar</button>
+              <button onclick="location.href='category/create.html';">Agregar</button>
+              <button onclick="location.href='category/edit.html';">Actualizar</button>
+              <button onclick="location.href='category/del.html';">Borrar</button>
+            </div>
+            <div id="teams" class="row">
+              <h5 class="filas">Equipos</h5>
+              <button class="button-primary" onclick="location.href='team/show.html';">Consultar</button>
+              <button class="button-primary" onclick="location.href='team/create.html';">Agregar</button>
+              <button class="button-primary" onclick="location.href='team/edit.html';">Actualizar</button>
+              <button class="button-primary" onclick="location.href='team/del.html';">Borrar</button>
+            </div>
+            <div id="players" class="row">
+              <h5 class="filas">Jugadores</h5>
+              <button onclick="location.href='player/show.html';">Consultar</button>
+              <button onclick="location.href='player/create.html';">Agregar</button>
+              <button onclick="location.href='player/edit.html';">Actualizar</button>
+              <button onclick="location.href='player/del.html';">Borrar</button>
+            </div>
+          </section>
+          <section class="sistema">
+            <h5 class="filas">WIP: Lineup para Siguiente Partido</h5>
+           <button class="button-primary">Crear</button>
+          </section>
+        </div>
+      </body>
+</html>
