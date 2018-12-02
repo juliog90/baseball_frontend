@@ -270,7 +270,7 @@ select:focus {
   outline: 0; }
 label,
 legend {
-  display: block;
+    display: block;
   margin-bottom: .5rem;
   font-weight: 600; }
 fieldset {
@@ -416,3 +416,33 @@ there.
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {}
+
+.title {
+    text-align: center;
+}
+
+.header {
+    margin-top: 15vh;
+    text-align: center;
+    margin-bottom: 2.5em;
+    
+}
+.navbar {
+    text-align: center;
+    margin-bottom: 2.5em;
+}
+
+.sistema {
+    text-align: center;
+    margin-bottom: 2.5em;
+}
+
+.labelform {
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+.basicform {
+    text-align: center;
+    margin-bottom: 2.5em;
+}
