@@ -3,20 +3,21 @@
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width initial-scale=1">
+      <script src="../js/main.js"></script>
       <link rel="stylesheet" href="../css/skeleton.css" type="text/css" media="screen" title="no title" charset="utf-8">
-      <title class="Crear Categoria">Menu</title>
+      <title class="Crear Categoria">Crear Temporada</title>
       <body>
         <div class="container">
           <section class="navbar">
             <h2>Sistema de Administracion de Beisbol</h2>
-            <h3>Crear Nueva Categoria</h3>
+            <h3>Crear Nueva Temporada</h3>
           </section>
           <section class="basicform">
             <div class="row">
               <label class="labelform" for="category">Nombre: </label>
-              <input  id="category" type="text" name="category">
+              <input  id="season" type="text" name="season">
               <div class="row">
-                <button>Crear</button>
+                <button onclick="insertSeason()">Crear</button>
               </div>
             </div>
           </section>
