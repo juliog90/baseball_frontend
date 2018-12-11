@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width initial-scale=1">
+      <script src="../js/main.js"></script>
+      <link rel="stylesheet" href="../css/skeleton.css" type="text/css" media="screen" title="no title" charset="utf-8">
+      <title class="title">Consultar Equipo</title>
+      <body onload="showComboTeamCategories()">
+        <div class="container">
+          <section class="navbar">
+            <h2>Sistema de Administracion de Beisbol</h2>
+            <h3>Consultar Equipo</h3>
+          </section>
+          <section class="basicform">
+            <div  id="content" class="row">
+              <label for="combo">Escoge una Categoria: </label>
+              <select id="combo" name="combo" onchange="updateComboTeams()">
+              </select>
+            </div>
+            <div  id="content2" class="row">
+              <label for="combo2">Escoge un Equipo: </label>
+              <select id="combo2" name="combo2" onchange="loadTeamStuff()">
+              </select>
+            </div>
+            <div id="content3" class="row">
+            </div>
+            <div id="deleteB" class="row">
+              <button  class="deleteB" onclick="delTeam()">Borrar</button>
+            </div>
+          </section>
+        </div>
+          </div>
+      </body>
+</html>

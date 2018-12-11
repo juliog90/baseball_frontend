@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width initial-scale=1">
+      <script src="../js/main.js"></script>
+      <link rel="stylesheet" href="../css/skeleton.css" type="text/css" media="screen" title="no title" charset="utf-8">
+      <title class="title">Agregar Equipo</title>
+      <body onload="showTeamInit()">
+        <div class="container">
+          <section class="navbar">
+            <h2>Sistema de Administracion de Beisbol</h2>
+            <h3>Agregar Equipo</h3>
+          </section>
+          <section class="basicform">
+            <div class="row">
+              <label for="name">Nombre</label>
+              <input id="name" type="text" name="name" onchange="activate()">
+            </div>
+            <div class="row">
+              <label for="status">Estado</label>
+              <select id="status" name="status">
+              </select>
+            </div>
+            <div class="row">
+              <label for="category">Categoria</label>
+              <select id="category" name="category">
+              </select>
+            <div class="row">
+              <label for="coach">Entrenador</label>
+              <select id="coach" name="coach">
+              </select>
+            </div>
+            <div class="row">
+              <label for="season">Temporada</label>
+              <select id="season" name="season">
+              </select>
+            </div>
+            <div class="row">
+              <label for="file">Imagen</label>
+              <form method="post" enctype="multipart/form-data">
+                <input id="imageUp" type="file" name="files[]" multiple>
+              </form>
+            </div>
+            <div id="addTeamButton" class="row">
+              <button id="btnAdd" class="Agregar" onclick="addTeam()">Agregar</button>
+            </div>
+          </section>
+        </div>
+        </div>
+      </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width initial-scale=1">
+      <script src="../js/main.js"></script>
+      <link rel="stylesheet" href="../css/skeleton.css" type="text/css" media="screen" title="no title" charset="utf-8">
+      <title class="title">Editar Equipo</title>
+      <body onload="showEditComboTeamCategories()">
+        <div class="container">
+          <section class="navbar">
+            <h2>Sistema de Administracion de Beisbol</h2>
+            <h3>Editar Equipo</h3>
+          </section>
+          <section class="basicform">
+            <div  id="content" class="row">
+              <label for="combo">Escoge una Categoria: </label>
+              <select id="combo" name="combo" onchange="updateComboTeams()">
+              </select>
+            </div>
+            <div  id="content2" class="row">
+              <label for="combo2">Escoge un Equipo: </label>
+              <select id="combo2" name="combo2" onchange="fillTeam()">
+              </select>
+            </div>
+            <div class="row">
+              <label for="name">Nombre</label>
+              <input id="name" type="text" name="name" onchange="activate()">
+            </div>
+            <div class="row">
+              <label for="status">Estado</label>
+              <select id="status" name="status">
+              </select>
+            </div>
+            <div class="row">
+              <label for="category">Categoria</label>
+              <select id="category" name="category">
+              </select>
+            <div class="row">
+              <label for="coach">Entrenador</label>
+              <select id="coach" name="coach">
+              </select>
+            </div>
+            <div class="row">
+              <label for="season">Temporada</label>
+              <select id="season" name="season">
+              </select>
+            </div>
+            <div class="row">
+              <label id="imglbl" for="file">Imagen</label>
+              <form method="post" enctype="multipart/form-data">
+                <input id="imageUp" type="file" name="files[]" multiple>
+              </form>
+            </div>
+            <p id='content3'></p>
+            <div id="addTeamButton" class="row">
+              <button id="btnAdd" class="Editar" onclick="editTeam()">Editar</button>
+            </div>
+          </section>
