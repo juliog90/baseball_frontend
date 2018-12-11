@@ -1,0 +1,520 @@
+//variables
+var screenWidth = 0;
+var b1, b2, b3, home;
+var homeCount=0;
+var guestCount=0;
+var i=0;
+var homesruns = 0;
+var guestsruns = 0;
+var outs = 0;
+var entry=1;
+
+var strikes=0;
+var balls=0;
+
+var teamNames=
+[
+    {
+        name:'Dogders'
+    },
+    {
+        name:'tomateros'
+    }
+];
+var homePlayers=
+[
+    {
+        name: "John Smith"
+    },
+    {
+        name: "Mary Jane"
+    },
+    {
+        name: "Peter Parker"
+    },
+    {
+        name: "Josh Nicoles"
+    },
+    {
+        name: "Nicolas Tesla"
+    },
+    {
+        name: "George Washington"
+    },
+    {
+        name: "Freddy Mercury"
+    },
+    {
+        name: "Daniel Torres"
+    },
+    {
+        name: "Pues yo"
+    }
+];
+
+var guestPlayers=
+[
+    {
+        name: "John Smith2"
+    },
+    {
+        name: "Mary Jane2"
+    },
+    {
+        name: "Peter Parker2"
+    },
+    {
+        name: "Josh Nicoles2"
+    },
+    {
+        name: "Nicolas Tesla2"
+    },
+    {
+        name: "George Washington2"
+    },
+    {
+        name: "Freddy Mercury2"
+    },
+    {
+        name: "Daniel Torres2"
+    },
+    {
+        name: "Pues yo2"
+    }
+];
+
+var players;
+
+var bases =
+[
+    {
+        id: 0,
+        name: "Home",
+        player: null,
+        
+    },
+    {
+        id: 1,
+        name: "Base 1",
+        player: null,
+        
+    },
+    {
+        id: 2,
+        name: "Base 2",
+        player: null,
+        
+    },
+    {
+        id: 3,
+        name: "Base 3",
+        player: null,
+        
+    }
+];
+var score = [
+	{
+		'bases' : bases
+	},
+	{
+		runs: {
+			'home' : homesruns,
+			'guest' : guestsruns
+		}
+		
+	}
+]
+window.onresize = resizeField();
+
+//init
+function init() {
+	console.log('Initializing page...');
+	//resize field
+	window.addEventListener("resize", drawField);
+	//draw field
+	drawField();
+}
+
+//resize field
+function resizeField()
+{
+	console.log('Resizing field...');
+	
+}
+
+//draw field
+function drawField() {
+	console.log('Drawing field...');
+	//get screen width
+	screenWidth = window.innerWidth;
+	//set field height and width
+	if (document.getElementById('field') != null) document.getElementById('field').style.height = screenWidth + 'px';
+	//get field svg
+	var svgParent = document.getElementById('svgfield');
+	//empty svg	
+	svgParent.innerHTML = '';
+	//convert percentage to pixels
+	var p = screenWidth / 100;
+	//diamond
+	
+	var pathDiamond = 'M' + (p * 50) + ',' + (p * 95) + ' L' + (p * 5) + ',' + (p * 50)	+ ' A' + (p * 40) + ',' + (p * 38) + ' 1 0,1 ' + (p * 95) + ',' + (p * 50) + ' Z';
+	drawPath(svgParent, null, pathDiamond, 'diamond');
+	//infield
+	var pathInfield = 'M' + (p * 25) + ',' + (p * 60) + ' L' + (p * 50) + ',' + (p * 35) + ' L' + (p * 75)  + ',' + (p * 60) + ' L' + (p * 50) + ',' + (p * 85)	+ ' Z';
+	drawPath(svgParent, null, pathInfield, 'infield');
+	//home circle
+	var homeCenter = new Point(p * 50, p * 83);
+	drawCircle(svgParent, homeCenter, (p * 12), 'diamond');
+    //pitchers mound
+	var homeCenter = new Point(p * 50, p * 60);
+	drawCircle(svgParent, homeCenter, (p * 6), 'diamond');
+	//homeplate
+	var pathHome = 'M' + (p * 50) + ',' + (p * 89)+ ' L' + (p * 46) + ',' + (p * 85) + ' L' + (p * 46) + ',' + (p * 79) + ' L' + (p * 54) + ',' + (p * 79) + ' L' + (p * 54) + ',' + (p * 85) + ' Z';
+	drawPath(svgParent, 'B0', pathHome, 'base');
+	drawCircle(svgParent, new Point(p * 50, p * 73),'20px','dialogs','dialog0');
+	//bases
+	var pathFirstBase = 'M' + (p * 71) + ',' + (p * 52) + 'L' + (p * 79) + ',' + (p * 44) + 'L' + (p * 87) + ',' + (p * 52)	+ 'L' + (p * 79) + ',' + (p * 60) + ' Z';
+    drawPath(svgParent, 'B1', pathFirstBase, 'base');
+    drawCircle(svgParent, new Point(p * 20, p * 38),'20px','dialogs','dialog1');
+	var pathSecondBase = 'M' + (p * 42) + ',' + (p * 23) + 'L' + (p * 50) + ',' + (p * 15) + 'L' + (p * 58) + ',' + (p * 23) + 'L' + (p * 50) + ',' + (p * 31) + ' Z';
+    drawPath(svgParent, 'B2', pathSecondBase, 'base');
+    drawCircle(svgParent, new Point(p * 80, p * 38),'20px','dialogs','dialog2');
+	var pathThirdBase = 'M' + (p * 13) + ',' + (p * 52) + 'L' + (p * 21) + ',' + (p * 44) + 'L' + (p * 29) + ',' + (p * 52) + 'L' + (p * 21) + ',' + (p * 60) + ' Z';
+    drawPath(svgParent, 'B3', pathThirdBase, 'base');
+    drawCircle(svgParent, new Point(p * 50, p * 11),'20px','dialogs','dialog3');
+	//base lines
+	drawLine(svgParent, new Point(p * 0, p * 39), new Point(p * 50, p * 89), 'baseline');
+	drawLine(svgParent, new Point(p * 100, p * 39), new Point(p * 50, p * 89), 'baseline');
+    writeText(svgParent,new Point(p * 50, p * 85), '','subtitle','b0name')
+    writeText(svgParent,new Point(p * 71, p * 52), '','subtitle','b1name')
+    writeText(svgParent,new Point(p * 42, p * 23), '','subtitle','b2name')
+    writeText(svgParent,new Point(p * 13, p * 52), '','subtitle','b3name')
+	game();
+}
+function game(){
+
+    setField();
+    document.getElementById('guestteamname').innerHTML=teamNames[0].name;
+    document.getElementById('hometeamname').innerHTML=teamNames[1].name;
+    var hometext = document.getElementById('b0name');
+    var mainButton = document.getElementById('mainButton');
+    mainButton.innerHTML='ball in game';
+    mainButton.setAttribute('onclick', 'ballInGame()')
+    bases[0].player = players[i];
+	hometext.innerHTML = bases[0].player.name;
+	home = bases[0].player.name;
+    document.getElementById('strike').setAttribute('onclick','strike()');
+	document.getElementById('ball').setAttribute('onclick','ball()');
+	console.log(score);
+	
+}
+
+
+function strike()
+{
+    if(strikes<2)
+    {
+        strikes++;
+    }
+    else
+    {
+        bases[0].player= null;
+        strikes=0;
+        out();
+        if(outs==0)
+        i--;
+        nextBatter();
+
+    }
+
+    console.log('st: ' + strikes);
+}
+
+function out()
+{
+    if(outs<2)
+    {
+        outs++;
+    }
+    else
+    {
+        outs=0;
+        entry++;
+        setField();
+    }
+}
+
+
+function ball()
+{
+    if(balls<3)
+    {
+        balls++;
+    }
+    else
+    {
+        balls=0;
+        baseOnball();
+        nextBatter();
+    }
+
+    console.log('b: ' + balls);
+}
+
+function baseOnball()
+{
+    if(bases[1].player==null)
+    {
+        bases[1].player=bases[0].player;
+        bases[0].player=null;
+    }
+    else
+    {
+        if(bases[2].player==null)
+        {
+            bases[2].player=bases[1].player;
+            bases[1].player=bases[0].player;
+            bases[0].player=null;
+        }
+        else
+        {
+            if(bases[3].player==null)
+            {
+                bases[3].player=bases[2].player;
+                bases[2].player=bases[1].player;
+                bases[1].player=bases[0].player;
+                bases[0].player=null;
+            }
+            else
+            {
+                run();
+                bases[3].player=bases[2].player;
+                bases[2].player=bases[1].player;
+                bases[1].player=bases[0].player;
+                bases[0].player=null;
+            }
+        }
+    }
+
+    putNames();
+
+}
+
+function putNames()
+{
+    for(var i=0; i<4;i++)
+    {
+        if(bases[i].player!=null)
+        {
+            document.getElementById('b'+i+'name').innerHTML=bases[i].player.name;
+        }
+    }
+}
+
+function setField()
+{
+
+    resetAllBases();
+
+    if(entry%2==0) //es par??
+    {
+        // es par, juega home
+        guestCount = i;
+        i = homeCount;
+        players = homePlayers;
+    }
+    else //no es parent, juega guest
+    {
+        homeCount = i;
+        i = guestCount;
+        players = guestPlayers;
+    }
+    for(var b=0; b<4;b++)
+    {
+        document.getElementById('b'+b+'name').innerHTML='';
+        bases[b].player=null;
+    }
+
+    document.getElementById("guestteamscore").innerHTML=guestsruns;
+    document.getElementById("hometeamscore").innerHTML=homesruns;
+    
+}
+
+function ballInGame()
+{
+    mainButton.setAttribute('onclick', 'nextBatter()')
+    mainButton.innerHTML='next batter';
+    PlayerRun(0);
+}
+
+function nextBatter()
+{
+    resetAllBases();
+
+    if(bases[0].player==null)
+    {
+        console.log('a');
+        if(i<8)
+        i++;
+        else
+        i=0;
+    bases[0].player = players[i];
+    document.getElementById('b0name').innerHTML=players[i].name;
+    mainButton.innerHTML='ball in game';
+    mainButton.setAttribute('onclick', 'ballInGame()')
+    }
+    else
+    {
+        console.log('b');
+        PlayerRun(0);
+    }
+    //document.getElementById('flyoutButton').style.display = 'none';
+}
+
+function canGetOut(a)
+{
+    if(outs<2)
+    {
+        var label=document.getElementById('b'+a+'name');
+        label.innerHTML='';
+        bases[a].player=null;
+        outs++;
+        resetAllBases();
+    }
+    else
+    {
+        outs=0;
+        entry++;
+        setField();
+    }
+
+}
+
+function groundOut()
+{
+    for(var i=1; i<3; i++)
+    {
+        if(bases[i].player!=null)
+        {
+            var base=document.getElementById('B'+i);
+            base.setAttribute('onclick','canGetOut('+i+')');
+            base.setAttribute('class','unavBase');
+        }
+    }
+}
+
+function flyout()
+{
+    if(outs<2)
+    {
+    bases[0].player=null;
+    document.getElementById('b0name').innerHTML='';
+    nextBatter();
+    outs++;
+    }
+    else
+    {
+        outs=0;
+        entry++;
+        setField();
+    }
+}
+
+function run()
+{
+    if(entry%2==0) //es par??
+    {
+        // es par, juega home
+        homesruns++;
+    }
+    else //no es par, juega guest
+    {
+        guestsruns++;
+    }
+
+    document.getElementById("guestteamscore").innerHTML=guestsruns;
+    document.getElementById("hometeamscore").innerHTML=homesruns;
+}
+
+function getPlayer(a, b)
+{
+    var from = document.getElementById('b' + a+'name');
+    var to = document.getElementById('b' + b+'name');
+ 
+    if(b!=0)
+    {
+    bases[b].player = bases[a].player;
+    bases[a].player = null;
+    from.innerHTML = '';
+    to.innerHTML = bases[b].player.name;
+    }
+    else
+    {
+        bases[a].player = null;
+        from.innerHTML = '';
+        run();
+    }
+
+    resetAllBases();
+}
+
+function resetAllBases()
+{
+    for(var b=0; b<4; b++)
+    {
+		var base = document.getElementById('B' + b);
+        base.setAttribute('style','cursor: unset;');
+        base.setAttribute('class','base');
+        base.setAttribute('onclick','');
+
+        if(bases[b].player != null)
+        {
+            base.setAttribute('onclick','PlayerRun(' + b + ')');
+            base.setAttribute('style','cursor: pointer;');
+        }
+        
+    }
+
+    console.log(outs + ', entry: ' + entry);
+}
+
+
+function PlayerRun(a)
+{
+    resetAllBases();
+        for(var b=a+1; b<5; b++)
+        {
+            if(b<4)
+            {
+                //-----------NO SÉ CÓMO SE HACE ESTOO----------
+                //var dialog = document.getElementById('dialog'+b);
+                //dialog.style.display = 'block';
+                var base = document.getElementById('B' + b);
+                if(bases[b].player == null)
+                {
+                    base.setAttribute('class','freeBase');
+                    
+                    base.setAttribute('onclick','getPlayer(' + a + ',' + b + ')');
+                    base.setAttribute('style','cursor: pointer;');
+                    
+                }
+                else
+                {
+                    for(var d=b; d<4; d++)
+                    {
+                        var base = document.getElementById('B' + d);
+                        base.setAttribute('class','unavBase');
+                    }
+                    break;
+                }
+            }
+            else
+            {
+                var base = document.getElementById('B0');
+                base.setAttribute('class','freeBase');
+                base.setAttribute('onclick','getPlayer('+ a + ',0)');
+                base.setAttribute('style','cursor: pointer;');
+                
+            }
+        }
+}
