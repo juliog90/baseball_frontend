@@ -1,0 +1,164 @@
+#container
+{
+	display: grid;
+	grid-template-columns: 50% 50%	;
+	grid-column-start: 1;
+	grid-column-end: 2;	
+}
+
+#winTitle
+{
+	font-size: 40px;
+}
+
+#error
+{
+	color: #ee5151;
+	display: none;
+	font-weight: bold;
+}
+
+.playerName
+{
+	font-size: 18px;
+	fill: rgb(37, 37, 37);
+	font-weight: bold;
+}
+
+.scores
+{
+	cursor: not-allowed;
+    pointer-events: none;
+	background: #FFF;
+	vertical-align: top;
+}
+
+#playersDialog
+{
+	color: rgb(37, 37, 37);	
+}
+
+.label:disabled
+{
+	color: rgb(37, 37, 37);
+	background: rgb(204, 204, 204);
+}
+
+.spacer
+{
+	border-radius: 25px;
+	width: 6%;
+	cursor: unset;
+	border: 0px;
+	font-weight: bolder;
+	font-size: 11px;
+	padding: 4px;
+	color: rgb(224, 224, 224);
+	background: rgb(224, 224, 224);
+	margin-top: 9px;
+}
+
+.spacerOn
+{
+	border-radius: 25px;
+	width: 6%;
+	cursor: unset;
+	border: 0px;
+	font-weight: bolder;
+	font-size: 11px;
+	padding: 4px;
+	color: rgba(0, 0, 0, 0);
+	background: rgb(37, 37, 37);
+	margin-top: 9px;
+}
+
+.values
+{
+	position: relative;
+	display: block;
+	align-content: stretch;
+}
+
+#scores td
+{
+	height: 150px;
+}
+
+.teamname, .teamscore, .label {
+	font-weight: bolder;
+	border: 0px;
+	font-size: 15px;
+	padding: 5px;
+}
+
+.teamscore
+{
+	font-weight: bolder;
+	text-align: center;
+	border: 0px;
+	font-size: 15px;
+
+}
+
+#entryname
+{
+	width: 15%;
+}
+
+#entryscore
+{
+	width: 7%;
+	background: rgb(37, 37, 37);
+	color: #FFF;
+}
+
+.teamPlaying
+{
+	font-weight: bold;
+	border: 0px;
+	font-size: 15px;
+	padding: 5px;
+	width:25%;
+	color: rgb(37, 37, 37);
+	background:rgb(230, 229, 229);
+	text-align: left;
+}
+
+.teamname {
+	text-align: left;
+	width:25%;
+	color: rgb(129, 129, 129);
+	background:rgb(255, 255, 255);
+}
+.teamscore {
+	width:10%;
+	color:rgb(37, 37, 37);
+	background:rgb(255, 255, 255);
+}
+
+#guestteamscore
+{
+	color: #FFF;
+	background: #ee5151;
+}
+
+#hometeamscore
+{
+	color: #FFF;
+	background: #43a6be;
+}
+
+
+.infield {
+	fill:rgb(80, 190, 86);
+}
+.diamond {
+	fill:rgb(255, 214, 168);
+}
+.base {
+	fill:#FFF;
+}
+.baseline {
+	stroke:#FFF;
+	stroke-width:4px;
+}

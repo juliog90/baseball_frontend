@@ -450,3 +450,16 @@ there.
 #content{
     display: inline-block;
 }
+
+#content3 {
+    display: inline-block;
+}
+
+#teamTabla {
+    margin-top: 5.5em;
+    text-align: center;
+}
+
+#deleteB {
+    margin-top: 2.5rem;
+}

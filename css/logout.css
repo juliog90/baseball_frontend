@@ -1,0 +1,22 @@
+#logoutTable{
+    position: relative;
+    float: right;
+    background: #4444;
+    color: #ffff;
+
+
+}
+#logoutTable td{
+    position: relative;
+    
+}
+#logoutTable td img{
+    height: 40px;
+    border-radius: 50%;
+}
+#logoutTable button{
+    background: #689F38;
+    color: #f4f4f4;
+    height: 42px;
+    border:none;
+}
