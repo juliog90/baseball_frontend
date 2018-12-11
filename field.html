@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--title-->
+		<title>Match Scorecard</title>
+		<!--style sheet-->
+		<link href="css/stylecard.css" rel="stylesheet"></link>
+		<link href="css/scorecard.css" rel="stylesheet"></link>
+		<!--script-->
+		<script src="js/array.js"></script>
+		<script src="js/scorecard.js"></script>
+		<script src="js/print.js"></script>
+		<script src="js/svg.js"></script>
+		<script src="js/action.js"></script>
+		<script src="js/displayMatches.js"></script>
+
+		<!--metadata-->
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta charset="utf8" />
+	</head>
+	<body onload="init();">
+		<header>
+			<td id="score" class="scores">
+					<button id="guestteamname" class="teamname" disabled></button>
+					<button id="guestteamscore" class="teamscore" disabled></button>
+					<button id="hometeamname" class="teamname" disabled></button> 
+					<button id="hometeamscore" class="teamscore" disabled></button>
+					<button id="entryname" class="teamPlaying" disabled>Entry</button>
+					<button id="entryscore" class="teamscore" disabled></button>
+			</td>
+			<td id="values" class="values">
+					<button class='label' disabled>Outs</button>
+					<button class='spacer' disabled id='O1'>O</button>
+					<button class='spacer' disabled id="O2">O</button>
+					<button class='label' disabled>Strikes</button>
+					<button class='spacer' disabled id="st1">O</button>
+					<button class='spacer' disabled id="st2">O</button>
+					<button class='label' disabled>Balls</button>
+					<button class='spacer' disabled id="ba1">O</button>
+					<button class='spacer' disabled id="ba2">O</button>
+					<button class='spacer' disabled id="ba3">O</button>
+			</td>
+						
+		</header>
+		<div id="field">	
+			<svg id="svgfield">
+			
+			</svg>
+		</div>
+		<div id="controls" class='controls'>
+				<div id='mainButns'>
+						<button class="mainButton" id="mainButton">Ball in Play</button>
+						<button class="hrButton" id="homeRunButton">HR</button>
+				</div>
+				<div id='container'>
+					<div id="playersDialog">
+							<h2>DUE NEXT</h2>
+							<label id="dueUp1" class="label"></label><br>
+							<label id="dueUp2" class="label"></label>
+					</div>
+						<div id='actionButns'>
+						<br>
+						<button class="button" id="strike">Strike</button>
+						<button class="button" id="ball">Ball</button><br>
+						<button class="disabledButn">GOut</button>
+						<button class="button" id="flyoutButton">FOut</button>
+						<!--<button class="button" id="groundButton">GOut</button>-->
+					</div>
+		</div>
+	</body>
+</html>
