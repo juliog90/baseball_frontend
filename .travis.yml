@@ -2,6 +2,7 @@ language: python
 addons:
     chrome: stable
 install:
+    - pip install selenium
     - sudo apt-get install nodejs
     - wget -N https://chromedriver.storage.googleapis.com/2.45/chromedriver_linux64.zip -P ~/
     - unzip ~/chromedriver_linux64.zip -d ~/
