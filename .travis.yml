@@ -13,7 +13,7 @@ install:
     - cd ..
     - ls
     - sudo mv baseball_frontend/ /var/www/
-script: python tests/selenium/test_baseball_login.py
+script: python /var/www/baseball_frontend/tests/selenium/test_baseball_login.py
 
     # sudo ln
 
