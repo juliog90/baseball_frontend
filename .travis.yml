@@ -4,7 +4,7 @@ addons:
 install:
     - pip install selenium
     - sudo apt-get install apache2
-    - sudo systemctl status apache2
+    - sudo service apache2 status
     - sudo apt-get install nodejs
     - wget -N https://chromedriver.storage.googleapis.com/2.45/chromedriver_linux64.zip -P ~/
     - unzip ~/chromedriver_linux64.zip -d ~/
