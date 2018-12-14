@@ -11,7 +11,7 @@ class BaseballLogin(unittest.TestCase):
 
     def test_login_baseball(self):
         driver = self.driver
-        driver.get("http://localhost/front-end/")
+        driver.get("http://localhost/baseball-frontend/")
         self.assertIn("Login", driver.title)
         user = driver.find_element_by_id("username")
         user.send_keys("manuelObrador")
