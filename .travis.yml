@@ -4,6 +4,7 @@ addons:
 install:
     - pip install selenium
     - sudo apt-get install apache2
+    - sudo systemctl start 
     - sudo apt-get install nodejs
     - wget -N https://chromedriver.storage.googleapis.com/2.45/chromedriver_linux64.zip -P ~/
     - unzip ~/chromedriver_linux64.zip -d ~/
@@ -12,7 +13,7 @@ install:
     - sudo chmod +x /usr/local/bin/chromedriver
     - cd ..
     - ls
-    - mv baseball_frontend/ /var/www/
+    - sudo mv baseball_frontend/ /var/www/
 script: python tests/selenium/test_baseball_login.py
 
     # sudo ln
