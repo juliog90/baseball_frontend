@@ -12,7 +12,7 @@ install:
     - sudo chmod +x /usr/local/bin/chromedriver
     - cd ..
     - ls
-    - mv baseball_fronend/ /var/www/
+    - mv baseball_frontend/ /var/www/
 script: python tests/selenium/test_baseball_login.py
 
     # sudo ln
